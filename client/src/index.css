@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+/* 1. IMPORTING CLEAN GEOMETRIC FONTS */
+@import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@700;800;900&family=Inter+Tight:wght@400;500;600&display=swap');
+
+:root {
+  --bg-dark: #05070a;
+  --bg-card: #0d1117;
+  --emerald-glow: #10b981;
+  --violet-glow: #8b5cf6;
+}
+
+/* 2. GLOBAL BASE STYLES */
+body {
+  background-color: var(--bg-dark);
+  color: #f8fafc;
+  font-family: 'Inter Tight', sans-serif;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  letter-spacing: -0.01em;
+}
+
+/* Global Cursor Logic */
+button, 
+a, 
+select, 
+input[type="submit"],
+label[for],
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+/* 3. HEADING FONT STYLE */
+h1, h2, h3, h4, .brand-name {
+  font-family: 'Urbanist', sans-serif;
+  letter-spacing: -0.02em; 
+  font-weight: 800;
+  font-style: normal !important;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--emerald-glow);
+}
+
+/* 4. CUSTOM COMPONENT CLASSES */
+@layer components {
+  /* High-end Glassmorphism Input */
+  .input-style {
+    @apply w-full px-5 py-4 rounded-2xl bg-white/5 border border-white/10 text-white placeholder:text-gray-500 focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 outline-none transition-all duration-300 backdrop-blur-sm;
+    font-family: 'Inter Tight', sans-serif;
+  }
+
+  /* Universal Premium Button */
+  .btn-primary {
+    @apply bg-emerald-600 hover:bg-emerald-500 text-white py-4 px-8 rounded-2xl transition-all duration-300 shadow-lg shadow-emerald-900/20 active:scale-95;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-style: normal;
+  }
+
+  /* Card Base Style - Avoid using @apply on itself */
+  .card-premium {
+    background-color: #0d1117;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 2.5rem;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Helper for clickable containers */
+  .interactive-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .interactive-card:hover {
+    border-color: rgba(16, 185, 129, 0.3);
+    background-color: rgba(255, 255, 255, 0.07);
+  }
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-scroll {
+  animation: scroll 30s linear infinite;
+  display: flex;
+  width: max-content;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
